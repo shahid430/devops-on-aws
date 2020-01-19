@@ -1,0 +1,22 @@
+create LambdaPipelineRole + Policy
+
+Create Repo
+
+create Pipeline:
+Pipeline
+Source
+Build
+Deploy :
+Stack name – LambdaPipeline-stack
+Change set name – LambdaPipeline-changeset
+Vorlage – BuildArtifact::outputtemplate.yaml
+Capabilities  – CAPABILITY_IAM
+Role name – LambdaPipelineCFRole 
+
+Add Action Group:
+Action name:  execute-changeset
+Action provider:  AWS CloudFormation
+Input artifacts: BuildArtifact
+Action mode: Execute a change set 
+Stack name : LambdaPipeline-stack
+ChangeSet: LambdaPipeline-changeset
